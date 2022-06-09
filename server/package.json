@@ -1,0 +1,24 @@
+{
+  "name": "server",
+  "scripts": {
+    "start": "ts-node-dev src/index.ts"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/node": "^17.0.39",
+    "@types/spotify-api": "^0.0.16",
+    "jest": "^28.1.0",
+    "prisma": "^3.14.0",
+    "ts-node": "^10.8.1",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.7.3"
+  },
+  "dependencies": {
+    "@prisma/client": "^3.14.0",
+    "axios": "^0.27.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1"
+  }
+}

@@ -1,0 +1,1 @@
+Spotify-Clone using Node and React with Typescript. 

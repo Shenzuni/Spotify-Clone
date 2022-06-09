@@ -1,0 +1,40 @@
+.pb-info {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+.pb-info a, .pb-info a img {
+  width: 56px;
+  height: 56px;
+}
+.pb-track {
+  margin: 0 14px;
+
+  overflow: hidden;
+  white-space: nowrap;
+}
+.pb-track-name {
+  font-size: 0.875rem;
+}
+.pb-track-name:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.pb-track-artists {
+  font-size: 0.6875rem;
+  color: #b3b3b3;
+}
+.pb-track-artist:hover {
+  color: white;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.pb-save {
+  fill: rgba(255,255,255,.7)
+}
+.button-svg:hover > .pb-save {
+  fill: white;
+}
+.pb-saved {
+  fill: #1ed760
+}

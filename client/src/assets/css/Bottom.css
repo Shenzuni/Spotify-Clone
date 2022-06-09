@@ -1,0 +1,19 @@
+.bottom {
+  display: flex;
+
+  padding: 0 16px;
+  background-color: #181818;
+  border-top: 1px solid #282828;
+}
+.pb-info {
+  width: 30%;
+  display: flex;
+}
+.pb-controls {
+  width: 40%;
+  display: flex;
+}
+.pb-extra {
+  width: 30%;
+  display: flex;
+}
