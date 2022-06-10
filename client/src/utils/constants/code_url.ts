@@ -1,4 +1,4 @@
-const client_id = process.env.REACT_APP_CLIENT_ID || ''
+const client_id = import.meta.env.VITE_CLIENT_ID || ''
 const redirect_uri = window.location.protocol + "//" + window.location.host
 const url = 'https://accounts.spotify.com/authorize?'
 const params = {

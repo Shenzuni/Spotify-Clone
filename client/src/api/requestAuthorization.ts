@@ -11,7 +11,7 @@ interface Authorization {
 export async function requestAuthorization(code: string) {
   return (
     await axios.get<Authorization>(
-      process.env.REACT_APP_SERVER_URL + '/login',
+      import.meta.env.VITE_SERVER_URL + '/login',
       { params: { code } }
     )
     .then(res => res.data)
