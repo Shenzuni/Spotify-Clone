@@ -15,5 +15,5 @@ export async function fetchAccessToken(code: string): Promise<Authorization> {
 
   return await axios.post<Authorization>(url, data_config, { headers })
   .then(res => res.data)
-  .catch(error => {throw error})
+  .catch(error => error)
 }

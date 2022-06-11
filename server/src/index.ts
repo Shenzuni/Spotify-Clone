@@ -2,7 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import { routes } from './routes'
 
-const port = 1500
+const port = 1500 || process.env.PORT
 const app = express()
 
 app.use(cors())

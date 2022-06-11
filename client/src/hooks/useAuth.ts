@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-import { requestAuthorization } from "api/requestAuthorization";
+import { requestAuthorization } from "api/server";
 
 export default function useAuth() {
   useEffect(() => {
