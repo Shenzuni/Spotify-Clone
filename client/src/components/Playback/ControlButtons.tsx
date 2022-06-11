@@ -1,9 +1,7 @@
-interface PlaybackControlButtonsProps {
-  auth: string;
-  player?: Spotify.Player;
-}
+import React from "react";
 
-import "assets/css/Playback/ControlButtons.css";
+import { handlePlayPauseClick } from "handlers/handlePlayPauseClick";
+
 import {
   NextIcon,
   PauseIcon,
@@ -13,9 +11,20 @@ import {
   ShuffleIcon,
 } from "assets/svg";
 
+import "assets/css/Playback/ControlButtons.css";
+
+interface PlaybackControlButtonsProps {
+  player?: Spotify.Player;
+  auth: string;
+  playing: boolean;
+  setPlaying: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
 export function PlaybackControlButtons({
-  auth,
   player,
+  auth,
+  playing,
+  setPlaying,
 }: PlaybackControlButtonsProps) {
   return (
     <div className="pb-control-buttons">
@@ -25,8 +34,11 @@ export function PlaybackControlButtons({
       <button className="button-svg button-default pb-previous">
         <PreviousIcon />
       </button>
-      <button className="button-svg pb-play-pause">
-        <PlayIcon />
+      <button
+        className="button-svg pb-play-pause"
+        onClick={() => handlePlayPauseClick(setPlaying, auth, player)}
+      >
+        {playing ? <PlayIcon /> : <PauseIcon />}
       </button>
       <button className="button-svg button-default pb-next">
         <NextIcon />

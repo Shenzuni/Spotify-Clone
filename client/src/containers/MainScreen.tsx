@@ -1,23 +1,24 @@
-import useAuth from "hooks/useAuth";
-import usePlayer from "hooks/usePlayer";
+import { useState } from "react"
 
-import Top from "containers/Top";
-import Bottom from "containers/Bottom";
+import useAuth from "hooks/useAuth"
+import usePlayer from "hooks/usePlayer"
 
-import "assets/css/MainScreen.css";
-import { useState } from "react";
+import Top from "containers/Top"
+import Bottom from "containers/Bottom"
+
+import "assets/css/MainScreen.css"
 
 export default function MainScreen() {
-  useAuth();
+  useAuth()
 
-  usePlayer();
+  usePlayer()
 
-  const [pbImgBottom, setPbImgBottom] = useState(true);
+  const [pbToggleImg, setPbToggleImg] = useState(true)
 
   return (
     <div className="main-screen">
-      <Top pbImgBottom={pbImgBottom} setPbImgBottom={setPbImgBottom} />
-      <Bottom pbImgBottom={pbImgBottom} setPbImgBottom={setPbImgBottom} />
+      <Top pbToggleImg={pbToggleImg} setPbToggleImg={setPbToggleImg} />
+      <Bottom pbToggleImg={pbToggleImg} setPbToggleImg={setPbToggleImg} />
     </div>
-  );
+  )
 }

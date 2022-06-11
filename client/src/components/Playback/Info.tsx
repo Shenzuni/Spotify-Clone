@@ -1,40 +1,51 @@
-import { useState } from "react";
+import { useState } from "react"
 
-import { ITrack } from "context/PlayerContext";
+import { SavedIcon, SaveIcon } from "assets/svg"
 
-import { SavedIcon, SaveIcon } from "assets/svg";
-
-import "assets/css/Playback/Info.css";
+import "assets/css/Playback/Info.css"
 
 interface PlaybackInfoProps {
-  auth: string;
-  track: ITrack;
+  auth: string
+  track: Spotify.Track
+  pbToggleImg: boolean
+  setPbToggleImg: (pbImgBottom: boolean) => void
 }
 
-export function PlaybackInfo({ auth, track }: PlaybackInfoProps) {
-  const [saved, setSaved] = useState(true);
+export function PlaybackInfo({
+  auth,
+  track,
+  pbToggleImg,
+  setPbToggleImg,
+}: PlaybackInfoProps) {
+  const [saved, setSaved] = useState(true)
 
   const Artists = () => (
     <>
       {track.artists.map((artist, index) => (
-        <span key={artist.id}>
+        <span key={artist.uri}>
           {index > 0 && ", "}
-          <a className="pb-track-artist" title={artist.name} href={artist.id}>
+          <a className="pb-track-artist" title={artist.name} href={artist.uri}>
             {artist.name}
           </a>
         </span>
       ))}
     </>
-  );
+  )
 
   return (
     <div className="pb-info">
-      <a href={track.album.id}>
-        <img alt="album" src={track.album.image64} title={track.album.name} />
-      </a>
+      {!pbToggleImg && (
+        <a href={track.album.uri}>
+          <img
+            alt="album"
+            src={track.album.images[0].url}
+            title={track.album.name}
+          />
+        </a>
+      )}
       <div className="pb-track">
         <div className="pb-track-name">
-          <a title={track.name} href={track.id}>
+          <a title={track.name} href={track.uri}>
             {track.name}
           </a>
         </div>
@@ -52,5 +63,5 @@ export function PlaybackInfo({ auth, track }: PlaybackInfoProps) {
         </button>
       )}
     </div>
-  );
+  )
 }

@@ -4,9 +4,9 @@ function config(auth: string): AxiosRequestConfig {
   const config = {
     headers: {
       Authorization: "Bearer " + auth,
-    }
+    },
   };
-  return config
+  return config;
 }
 
 export async function currentUsersProfile(auth: string) {
@@ -41,11 +41,13 @@ export async function transferPlaybackDevice(
   play: boolean,
   auth: string
 ) {
-  axios.put<SpotifyApi.VoidResponse>(
-    "https://api.spotify.com/v1/me/player",
-    { device_ids, play },
-    config(auth)
-  );
+  axios
+    .put<SpotifyApi.VoidResponse>(
+      "https://api.spotify.com/v1/me/player",
+      { device_ids, play },
+      config(auth)
+    )
+    .catch(() => transferPlaybackDevice(device_ids, play, auth));
 }
 // export const GetPlaybackDevice = async (auth) => {
 //   return await axios({

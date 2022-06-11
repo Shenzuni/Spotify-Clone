@@ -1,3 +1,13 @@
 .sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background-color: #000101;
+}
+.sb-pb-img {
+  display: flex;
+  align-items: end;
+}
+.sb-pb-img > img {
+  width: 100%;
 }

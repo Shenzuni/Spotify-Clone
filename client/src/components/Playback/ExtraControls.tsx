@@ -1,14 +1,13 @@
-import "assets/css/Playback/ExtraControls.css";
-import { ITrack } from "context/PlayerContext";
+import "assets/css/Playback/ExtraControls.css"
 
 interface PlaybackExtraControlsProps {
-  auth: string;
-  track: ITrack;
+  auth: string
+  track: Spotify.Track
 }
 
 export function PlaybackExtraControls({
   auth,
   track,
 }: PlaybackExtraControlsProps) {
-  return <div className="pb-extra"></div>;
+  return <div className="pb-extra"></div>
 }

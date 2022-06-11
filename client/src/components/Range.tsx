@@ -2,33 +2,29 @@ import "assets/css/Range.css";
 import React, { useEffect, useState } from "react";
 
 interface RangeProps {
+  value: number;
+  setValue: React.Dispatch<React.SetStateAction<number>>;
   max: number;
-  initialValue: number;
   onChange?: Function;
   onMouseDown?: Function;
-  onMouseUp?: Function;
+  onClick?: Function;
 }
 
 export function Range({
+  value,
+  setValue,
   max,
-  initialValue,
   onChange,
   onMouseDown,
-  onMouseUp,
+  onClick,
 }: RangeProps) {
-  const [value, setValue] = useState(0);
-
-  useEffect(() => {
-    setValue(initialValue);
-  }, [initialValue]);
-
   return (
     <div className="range-outer">
       <div className="range-bg"></div>
       <div
         className="range-value"
         style={{
-          width: (value / max) * 100 + "%",
+          width: (Math.floor(value) / max) * 100 + "%",
         }}
       ></div>
       <input
@@ -36,17 +32,16 @@ export function Range({
         type="range"
         min="0"
         max={max}
-        step="1"
-        value={value}
+        step="0.2"
+        value={Math.floor(value)}
         onChange={(e) => {
-          setValue(e.target.valueAsNumber);
           onChange && onChange(e);
         }}
         onMouseDown={(e) => {
           onMouseDown && onMouseDown(e);
         }}
-        onMouseUp={(e) => {
-          onMouseUp && onMouseUp(e);
+        onClick={(e) => {
+          onClick && onClick(e);
         }}
       ></input>
     </div>

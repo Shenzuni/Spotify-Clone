@@ -7,28 +7,38 @@ data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAEsCAIAAAD2HxkiAAAAAXNSR0IArs
 const imageProfile64 = `
 data:image/jpeg;base64,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
 `;
-export const TRACK = {
+export const TRACK: Spotify.Track = {
+  uri: "spotify:track:5iZw5AzGiQx5rmmocWBFOz",
   id: "5iZw5AzGiQx5rmmocWBFOz",
+  type: "track",
+  media_type: "audio",
+  is_playable: true,
   name: "The Night I Drove Alone",
   artists: [
     {
-      id: "spotify:artist:0znuUIjvP0LXEslfaq0Nor",
+      uri: "spotify:artist:0znuUIjvP0LXEslfaq0Nor",
       name: "Citizen",
     },
     {
-      id: "spotify:artist:4DUQBYAyOTZotSEdKhaf6c",
+      uri: "spotify:artist:4DUQBYAyOTZotSEdKhaf6c",
       name: "Basement",
     },
     {
-      id: "spotify:artist:3NChzMpu9exTlNPiqUQ2DE",
+      uri: "spotify:artist:3NChzMpu9exTlNPiqUQ2DE",
       name: "Thrice",
     },
   ],
   album: {
-    id: "spotify:album:6QDNTEgCBoGd6zaKZ19vNC",
+    uri: "spotify:album:6QDNTEgCBoGd6zaKZ19vNC",
     name: "Youth",
-    image64: imageTrack64,
-    image300: imageTrack300,
+    images: [
+      {
+        url: imageTrack64,
+      },
+      {
+        url: imageTrack300,
+      },
+    ],
   },
 };
 export const PROFILE = {

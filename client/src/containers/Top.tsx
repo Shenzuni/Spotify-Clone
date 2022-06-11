@@ -1,16 +1,16 @@
-import Sidebar from "containers/Sidebar";
-import MainContent from "containers/MainContent";
+import Sidebar from "containers/Sidebar"
+import MainContent from "containers/MainContent"
 
-import Split from "react-split";
+import Split from "react-split"
 
-import "assets/css/Top.css";
+import "assets/css/Top.css"
 
 interface TopProps {
-  pbImgBottom: boolean;
-  setPbImgBottom: (pbImgBottom: boolean) => void;
+  pbToggleImg: boolean
+  setPbToggleImg: (pbToggleImg: boolean) => void
 }
 
-export default function Top({ pbImgBottom, setPbImgBottom }: TopProps) {
+export default function Top({ pbToggleImg, setPbToggleImg }: TopProps) {
   return (
     <Split
       className="top"
@@ -20,8 +20,8 @@ export default function Top({ pbImgBottom, setPbImgBottom }: TopProps) {
       maxSize={[393, Infinity]}
       snapOffset={0}
     >
-      <Sidebar pbImgBottom={pbImgBottom} setPbImgBottom={setPbImgBottom} />
+      <Sidebar pbToggleImg={pbToggleImg} setPbToggleImg={setPbToggleImg} />
       <MainContent />
     </Split>
-  );
+  )
 }

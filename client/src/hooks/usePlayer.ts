@@ -1,3 +1,4 @@
+import { transferPlaybackDevice } from "api/endpoints";
 import { useEffect } from "react";
 
 import { useAuthContext } from "./useAuthContext";
@@ -5,7 +6,8 @@ import { usePlayerContext } from "./usePlayerContext";
 
 export default function usePlayer() {
   const { auth } = useAuthContext();
-  const { player, onPlayerReady, onPlayerStateChange } = usePlayerContext();
+  const { player, device, onPlayerReady, onPlayerStateChange } =
+    usePlayerContext();
 
   useEffect(() => {
     if (auth && auth !== "local" && !player) {
@@ -25,10 +27,10 @@ export default function usePlayer() {
           onPlayerReady(player, auth, device_id);
         });
         player.on("playback_error", (error) => {
-          //
+          transferPlaybackDevice([device!], true, auth);
         });
-        player.addListener("player_state_changed", state => {
-          state && onPlayerStateChange(state);
+        player.addListener("player_state_changed", (state) => {
+          state.track_window.current_track.id && onPlayerStateChange(state);
         });
         player.connect();
       };
