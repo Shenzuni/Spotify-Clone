@@ -9,8 +9,8 @@ function App() {
       <PlayerProvider>
         <MainScreen />
       </PlayerProvider>
-    </AuthProvider>  
-  )
+    </AuthProvider>
+  );
 }
 
 export default App;

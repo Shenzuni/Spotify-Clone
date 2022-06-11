@@ -1,0 +1,15 @@
+.pb-control-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.pb-play-pause {
+  margin: 0 8px;
+
+  background-color: white;
+  border-radius: 16px;
+}
+.pb-play-pause:hover {
+  transform: scale(1.06);
+}

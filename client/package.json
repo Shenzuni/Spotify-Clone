@@ -5,10 +5,11 @@
   "type": "module",
   "dependencies": {
     "axios": "^0.27.2",
+    "prettier": "^2.6.2",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-perfect-scrollbar": "^1.5.8",
-    "react-split": "^2.0.14"  
+    "react-split": "^2.0.14"
   },
   "devDependencies": {
     "@types/node": "^16.11.38",

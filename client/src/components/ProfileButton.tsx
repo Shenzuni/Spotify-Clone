@@ -1,25 +1,30 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 
-import handleGetCurrentProfile from "handlers/handleGetCurrentProfile"
+import handleGetCurrentProfile from "handlers/handleGetCurrentProfile";
 
-import "assets/css/ProfileButton.css"
+import "assets/css/ProfileButton.css";
 
 interface ProfileButtonProps {
-  auth: string
+  auth: string;
 }
 
 export default function ProfileButton({ auth }: ProfileButtonProps) {
-  const [name, setName] = useState<string>()
-  const [image, setImage] = useState<string>()
+  const [name, setName] = useState<string>();
+  const [image, setImage] = useState<string>();
+
+  const setProfile = (name?: string, image?: string) => {
+    setName(name);
+    setImage(image);
+  };
 
   useEffect(() => {
-    handleGetCurrentProfile(auth, setName, setImage)
-  }, [auth])
+    handleGetCurrentProfile(auth, setProfile);
+  }, [auth]);
 
   return (
     <div className="profile-button">
       <img alt="profile" src={image} />
       {name}
     </div>
-  )
+  );
 }

@@ -1,19 +1,19 @@
-import { currentUsersProfile } from "api/endpoints"
-import { PROFILE } from "utils/constants/local"
+import { currentUsersProfile } from "api/endpoints";
+import { PROFILE } from "utils/constants/local";
 
 export default async function handleGetCurrentProfile(
   auth: string,
-  setName: (name?: string) => void, 
-  setImage: (image?: string) => void
+  setProfile: (name?: string, image?: string) => void
 ) {
-  let data
-  if (auth === 'caco') {
-    data = PROFILE
+  let data;
+  if (auth === "local") {
+    data = PROFILE;
+  } else {
+    data = await currentUsersProfile(auth).then((res) => res);
   }
-  else {
-    data = await currentUsersProfile(auth)
-    .then(res => res)
-  }
-  setName(data.display_name)
-  setImage((data.images && data.images[0].url) || '')
+
+  const name = data.display_name;
+  const image = data.images && data.images[0].url;
+
+  setProfile(name, image);
 }

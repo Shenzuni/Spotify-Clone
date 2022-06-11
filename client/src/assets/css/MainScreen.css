@@ -1,21 +1,22 @@
 @font-face {
   font-family: spotify-regular;
-  src: url(../fonts/CircularStd-Light.otf)
+  src: url(../fonts/CircularStd-Light.otf);
 }
 @font-face {
   font-family: spotify-bold;
-  src: url(../fonts/CircularStd-Bold.otf)
+  src: url(../fonts/CircularStd-Bold.otf);
 }
 body {
   margin: 0;
 
   font-family: spotify-regular;
-  font-weight:lighter;
+  font-weight: lighter;
   color: white;
-
+  letter-spacing: .01rem;
   cursor: default;
 }
-a, button {
+a,
+button {
   all: unset;
 }
 .main-screen {
@@ -23,13 +24,13 @@ a, button {
   height: 100vh;
 
   display: grid;
-  grid-template-areas: 
+  grid-template-areas:
     "top"
     "bottom";
   grid-template-rows: auto 91px;
 }
 .top {
-  grid-area: top
+  grid-area: top;
 }
 .bottom {
   grid-area: bottom;
@@ -38,6 +39,8 @@ a, button {
 .button-svg {
   width: 32px;
   height: 32px;
+  min-width: 32px;
+  min-height: 32px;
 
   display: flex;
   justify-content: center;
@@ -46,4 +49,13 @@ a, button {
 .button-svg svg {
   width: 16px;
   height: 16px;
+}
+.button-default svg {
+  fill: rgba(255, 255, 255, 0.7);
+}
+.button-default:hover > svg {
+  fill: white;
+}
+.button-active svg {
+  fill: #1ed760;
 }

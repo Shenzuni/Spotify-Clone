@@ -3,7 +3,8 @@
   justify-content: start;
   align-items: center;
 }
-.pb-info a, .pb-info a img {
+.pb-info a,
+.pb-info a img {
   width: 56px;
   height: 56px;
 }
@@ -29,12 +30,6 @@
   text-decoration: underline;
   cursor: pointer;
 }
-.pb-save {
-  fill: rgba(255,255,255,.7)
-}
-.button-svg:hover > .pb-save {
-  fill: white;
-}
-.pb-saved {
-  fill: #1ed760
+.pb-track-name, .pb-track-artists {
+  padding-right: 6px;
 }

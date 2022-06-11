@@ -1,48 +1,51 @@
-import axios, { AxiosRequestConfig } from "axios"
+import axios, { AxiosRequestConfig } from "axios";
 
-function config(auth: string, data?: any): AxiosRequestConfig {
-  return { 
+function config(auth: string): AxiosRequestConfig {
+  const config = {
     headers: {
-      Authorization: "Bearer " + auth
-    },
-    data
-  }
+      Authorization: "Bearer " + auth,
+    }
+  };
+  return config
 }
 
 export async function currentUsersProfile(auth: string) {
-  return (
-    await axios.get<SpotifyApi.CurrentUsersProfileResponse>(
-      "https://api.spotify.com/v1/me", config(auth)
+  return await axios
+    .get<SpotifyApi.CurrentUsersProfileResponse>(
+      "https://api.spotify.com/v1/me",
+      config(auth)
     )
-    .then(res => res.data)
-  )
+    .then((res) => res.data);
 }
 export async function playerResume(auth: string) {
   axios.get<SpotifyApi.VoidResponse>(
-    "https://api.spotify.com/v1/me/player/play", config(auth)
-  )
-} 
+    "https://api.spotify.com/v1/me/player/play",
+    config(auth)
+  );
+}
 export async function playerPause(auth: string) {
   axios.put<SpotifyApi.VoidResponse>(
-    "https://api.spotify.com/v1/me/player/pause", config(auth)
-  )
-} 
-export async function playerSeek(
-  position_ms: number,
+    "https://api.spotify.com/v1/me/player/pause",
+    config(auth)
+  );
+}
+export async function playerSeek(position_ms: number, auth: string) {
+  axios.put<SpotifyApi.VoidResponse>(
+    "https://api.spotify.com/v1/me/player/seek",
+    { position_ms },
+    config(auth)
+  );
+}
+export async function transferPlaybackDevice(
+  device_ids: string[],
+  play: boolean,
   auth: string
 ) {
   axios.put<SpotifyApi.VoidResponse>(
-    "https://api.spotify.com/v1/me/player/seek", config(auth, { position_ms })
-  )
-} 
-export async function TransferPlaybackDevice(
-  devices_id: string[], 
-  play: boolean, 
-  auth: string
-) {
-  axios.put<SpotifyApi.VoidResponse>(
-    "https://api.spotify.com/v1/me/player", config(auth, { devices_id, play })
-  )
+    "https://api.spotify.com/v1/me/player",
+    { device_ids, play },
+    config(auth)
+  );
 }
 // export const GetPlaybackDevice = async (auth) => {
 //   return await axios({
@@ -59,8 +62,8 @@ export async function TransferPlaybackDevice(
 //   return await axios({
 //     url: "https://api.spotify.com/v1/me/tracks/contains",
 //     method: "get",
-//     params: { 
-//       ids 
+//     params: {
+//       ids
 //     },
 //     headers: {
 //       Authorization: "Bearer " + auth

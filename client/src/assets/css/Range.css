@@ -1,0 +1,54 @@
+.range-outer {
+  display: flex;
+  align-items: center;
+
+  position: relative;
+
+  width: 100%;
+  height: 12px;
+}
+.range {
+  position: absolute;
+
+  width: calc(12px + 100%);
+  height: 4px;
+  transform: translateX(-6px);
+
+  appearance: none;
+  overflow: visible;
+  margin: 0;
+  background: transparent;
+}
+.range-bg,
+.range-value {
+  width: inherit;
+  height: 4px;
+
+  position: absolute;
+
+  border-radius: 4px;
+}
+.range-bg {
+  background-color: #5e5e5e;
+}
+.range-value {
+  background-color: white;
+  max-width: 100%;
+}
+.range::-webkit-slider-thumb {
+  appearance: none;
+
+  width: 12px;
+  height: 12px;
+  border-radius: 12px;
+
+  pointer-events: none;
+}
+.range-outer:hover > .range::-webkit-slider-thumb,
+.range-extend:hover .range-outer > .range::-webkit-slider-thumb {
+  background-color: white;
+}
+.range-outer:hover > .range-value,
+.range-extend:hover .range-outer > .range-value {
+  background-color: #1ed760;
+}
