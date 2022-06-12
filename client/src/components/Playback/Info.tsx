@@ -1,14 +1,14 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 import { SavedIcon, SaveIcon } from "assets/svg"
 
-import "assets/css/Playback/Info.css"
+import { PlaybackImage } from "./Image"
 
 interface PlaybackInfoProps {
   auth: string
   track: Spotify.Track
   pbToggleImg: boolean
-  setPbToggleImg: (pbImgBottom: boolean) => void
+  setPbToggleImg: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export function PlaybackInfo({
@@ -19,12 +19,27 @@ export function PlaybackInfo({
 }: PlaybackInfoProps) {
   const [saved, setSaved] = useState(true)
 
+  useEffect(() => {
+    document.title =
+      track.name +
+      " • " +
+      track.artists.map((artist, index) => {
+        let title = index > 0 ? " " : ""
+        title += artist.name
+        return title
+      })
+  }, [track])
+
   const Artists = () => (
     <>
       {track.artists.map((artist, index) => (
         <span key={artist.uri}>
           {index > 0 && ", "}
-          <a className="pb-track-artist" title={artist.name} href={artist.uri}>
+          <a
+            className="hover:cursor-pointer hover:underline hover:text-white"
+            title={artist.name}
+            href={artist.uri}
+          >
             {artist.name}
           </a>
         </span>
@@ -33,32 +48,32 @@ export function PlaybackInfo({
   )
 
   return (
-    <div className="pb-info">
+    <div className="flex w-[30%] justify-start items-center">
       {!pbToggleImg && (
-        <a href={track.album.uri}>
-          <img
-            alt="album"
-            src={track.album.images[0].url}
-            title={track.album.name}
+        <div className="w-14 h-14 mr-4">
+          <PlaybackImage
+            isToggled={pbToggleImg}
+            setIsToggled={setPbToggleImg}
+            track={track}
           />
-        </a>
+        </div>
       )}
-      <div className="pb-track">
-        <div className="pb-track-name">
+      <div className="-ml-0.5 overflow-hidden">
+        <div className="pr-5 text-sm hover:cursor-pointer hover:underline hover:text-white">
           <a title={track.name} href={track.uri}>
             {track.name}
           </a>
         </div>
-        <div className="pb-track-artists">
+        <div className="pr-5 text-[0.6875rem] text-[#b3b3b3]">
           <Artists />
         </div>
       </div>
       {saved ? (
-        <button className="button-svg button-active saved">
+        <button className="btn default">
           <SavedIcon />
         </button>
       ) : (
-        <button className="button-svg button-default save">
+        <button className="btn">
           <SaveIcon />
         </button>
       )}

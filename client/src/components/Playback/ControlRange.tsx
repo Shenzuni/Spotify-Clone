@@ -4,8 +4,6 @@ import { Range } from "components/Range"
 
 import { display_mm_ss } from "utils/helpers/display_mm_ss"
 
-import "assets/css/Playback/ControlRange.css"
-
 interface PlaybackControlRangeProps {
   auth: string
   player?: Spotify.Player
@@ -73,17 +71,20 @@ export function PlaybackControlRange({
   }, [setHoldingRange, player, progress])
 
   return (
-    <div className="pb-control-range">
-      <div className="pb-elapsed">{display_mm_ss(progress_s)}</div>
+    <div className="flex items-center gap-2 h-auto">
+      <div className="text-[0.6875rem] text-[#ffffffb3] min-w-[40px] text-right leading-1">
+        {display_mm_ss(progress_s)}
+      </div>
       <Range
         value={progress_s}
-        setValue={setProgress}
         max={duration_s}
         onChange={onChange}
         onMouseDown={onMouseDown}
         onClick={onClick}
       />
-      <div className="pb-duration">{display_mm_ss(duration_s)}</div>
+      <div className="text-[0.6875rem] text-[#ffffffb3] min-w-[40px] text-left">
+        {display_mm_ss(duration_s)}
+      </div>
     </div>
   )
 }

@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@font-face {
+  font-family: spotify-regular;
+  src: url(src/assets/fonts/CircularStd-Light.otf);
+}
+@font-face {
+  font-family: spotify-bold;
+  src: url(src/assets/fonts/CircularStd-Bold.otf);
+}
+body {
+  margin: 0;
+
+  font-family: spotify-regular;
+  font-weight: lighter;
+  color: white;
+  letter-spacing: 0.01rem;
+  cursor: default;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+a,
+button {
+  all: unset;
+}
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  width: 32px;
+  min-height: 32px;
+  min-width: 32px;
+}
+.btn > svg {
+  height: 16px;
+  width: 16px;
+}
+.default {
+  fill: #ffffffb3;
+}
+.default:hover {
+  fill: white;
+}
+.default:active {
+  fill: rgba(255, 255, 255, 0.7);
+}
+.img-toggle-hover:hover > svg {
+  fill: white;
+}
+.range::-webkit-slider-thumb {
+  appearance: none;
+
+  width: 12px;
+  height: 12px;
+  border-radius: 12px;
+
+  pointer-events: none;
+}
+.webkit:hover .range::-webkit-slider-thumb {
+  background-color: white;
+}
+
+a img {
+  padding: 0;
+  margin: 0;
+  display: block;
+}
+.gutter {
+  border: 5px solid transparent;
+  margin: 0 -6px;
+  z-index: 1;
+}
+.gutter:hover {
+  cursor: col-resize;
+}
+
+.main-content,
+.main-content > .topbar {
+  border-left: 1px solid transparent;
+}
+.gutter:hover + .main-content,
+.gutter:active + .main-content,
+.gutter:hover + .main-content > header,
+.gutter:active + .main-content > header {
+  border-left: 1px solid #505050;
+}

@@ -1,13 +1,12 @@
-header {
+.dasdasdasdasdheader {
   display: flex;
   align-items: center;
-  justify-content: right;
+  justify-content: space-between;
 
   height: 64px;
-  padding: 16px;
+  padding: 16px 32px;
   box-sizing: border-box;
 
-  background-color: #070606;
-  border-left: 2px solid #070606;
-  margin-left: -2px;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), #12121280);
+  margin-left: px;
 }

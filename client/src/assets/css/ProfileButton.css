@@ -1,0 +1,35 @@
+.profile-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #000000b3;
+  padding: 2px;
+  border-radius: 23px;
+  cursor: pointer;
+
+  font-family: spotify-bold;
+  font-size: 0.875rem;
+  letter-spacing: 0.005rem;
+  line-height: 1rem;
+}
+.profile-button:hover {
+  background-color: #282828;
+}
+.profile-button img {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}
+.profile-button .username {
+  max-width: 110px;
+}
+.profile-dropdown {
+  height: 16px;
+  width: 16px;
+  margin-right: 6px;
+}
+.profile-dropdown svg {
+  height: inherit;
+  width: inherit;
+  fill: white;
+}

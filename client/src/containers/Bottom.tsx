@@ -1,3 +1,6 @@
+import { useAuthContext } from "hooks/useAuth"
+import { usePlayerContext } from "hooks/usePlayer"
+
 import { PlaybackInfo } from "components/Playback/Info"
 
 import { PlaybackControlButtons } from "components/Playback/ControlButtons"
@@ -5,14 +8,11 @@ import { PlaybackControlRange } from "components/Playback/ControlRange"
 
 import { PlaybackExtraControls } from "components/Playback/ExtraControls"
 
-import { useAuthContext } from "hooks/useAuthContext"
-import { usePlayerContext } from "hooks/usePlayerContext"
-
 import "assets/css/Bottom.css"
 
 interface BottomProps {
   pbToggleImg: boolean
-  setPbToggleImg: (pbImgBottom: boolean) => void
+  setPbToggleImg: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export default function Bottom({ pbToggleImg, setPbToggleImg }: BottomProps) {
@@ -21,7 +21,7 @@ export default function Bottom({ pbToggleImg, setPbToggleImg }: BottomProps) {
     usePlayerContext()
 
   return (
-    <div className="bottom">
+    <div className="flex items-center px-4 min-h-[91px] bg-[#181818] border-t border-t-[#282828]">
       {auth && (
         <>
           <PlaybackInfo
@@ -30,7 +30,7 @@ export default function Bottom({ pbToggleImg, setPbToggleImg }: BottomProps) {
             pbToggleImg={pbToggleImg}
             setPbToggleImg={setPbToggleImg}
           />
-          <div className="pb-controls">
+          <div className="flex flex-col w-[40%] mw-[722px]">
             <PlaybackControlButtons
               auth={auth}
               player={player}
@@ -46,7 +46,7 @@ export default function Bottom({ pbToggleImg, setPbToggleImg }: BottomProps) {
               playing={playing}
             />
           </div>
-          <PlaybackExtraControls auth={auth} track={track} />
+          <PlaybackExtraControls auth={auth} player={player} track={track} />
         </>
       )}
     </div>

@@ -13,3 +13,10 @@
 .pb-play-pause:hover {
   transform: scale(1.06);
 }
+.pb-play-pause:active {
+  transform: none;
+}
+.pb-previous:active > svg,
+.pb-next:active > svg {
+  fill: rgba(255, 255, 255, 0.7) !important;
+}

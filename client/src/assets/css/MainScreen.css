@@ -12,12 +12,19 @@ body {
   font-family: spotify-regular;
   font-weight: lighter;
   color: white;
-  letter-spacing: .01rem;
+  letter-spacing: 0.01rem;
   cursor: default;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 a,
 button {
   all: unset;
+}
+a img {
+  padding: 0;
+  margin: 0;
+  display: block;
 }
 .main-screen {
   width: 100%;
@@ -55,6 +62,9 @@ button {
 }
 .button-default:hover > svg {
   fill: white;
+}
+.button-default:active svg {
+  fill: rgba(255, 255, 255, 0.7);
 }
 .button-active svg {
   fill: #1ed760;

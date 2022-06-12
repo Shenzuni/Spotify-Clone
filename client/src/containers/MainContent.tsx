@@ -1,11 +1,17 @@
-import Header from "containers/Header";
+import { usePlayerContext } from "hooks/usePlayer"
+import { useAuthContext } from "hooks/useAuth"
 
-import "assets/css/MainContent.css";
+import { Header } from "components/Header"
+
+import "assets/css/MainContent.css"
 
 export default function MainContent() {
+  const { auth, setAuth } = useAuthContext()
+  const { track } = usePlayerContext()
+
   return (
     <div className="main-content">
-      <Header />
+      <Header auth={auth} setAuth={setAuth} track={track} />
     </div>
-  );
+  )
 }

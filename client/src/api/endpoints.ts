@@ -1,12 +1,12 @@
-import axios, { AxiosRequestConfig } from "axios";
+import axios, { AxiosRequestConfig } from "axios"
 
 function config(auth: string): AxiosRequestConfig {
   const config = {
     headers: {
       Authorization: "Bearer " + auth,
     },
-  };
-  return config;
+  }
+  return config
 }
 
 export async function currentUsersProfile(auth: string) {
@@ -15,26 +15,26 @@ export async function currentUsersProfile(auth: string) {
       "https://api.spotify.com/v1/me",
       config(auth)
     )
-    .then((res) => res.data);
+    .then((res) => res.data)
 }
 export async function playerResume(auth: string) {
   axios.get<SpotifyApi.VoidResponse>(
     "https://api.spotify.com/v1/me/player/play",
     config(auth)
-  );
+  )
 }
 export async function playerPause(auth: string) {
   axios.put<SpotifyApi.VoidResponse>(
     "https://api.spotify.com/v1/me/player/pause",
     config(auth)
-  );
+  )
 }
 export async function playerSeek(position_ms: number, auth: string) {
   axios.put<SpotifyApi.VoidResponse>(
     "https://api.spotify.com/v1/me/player/seek",
     { position_ms },
     config(auth)
-  );
+  )
 }
 export async function transferPlaybackDevice(
   device_ids: string[],
@@ -47,7 +47,7 @@ export async function transferPlaybackDevice(
       { device_ids, play },
       config(auth)
     )
-    .catch(() => transferPlaybackDevice(device_ids, play, auth));
+    .catch(() => transferPlaybackDevice(device_ids, play, auth))
 }
 // export const GetPlaybackDevice = async (auth) => {
 //   return await axios({
@@ -60,17 +60,12 @@ export async function transferPlaybackDevice(
 //   .then(res => res.data)
 //   .catch(error => {throw error})
 // }
-// export const TrackIsSaved = async (auth, ids) => {
-//   return await axios({
-//     url: "https://api.spotify.com/v1/me/tracks/contains",
-//     method: "get",
-//     params: {
-//       ids
-//     },
-//     headers: {
-//       Authorization: "Bearer " + auth
-//     }
-//   })
+// export async function TrackIsSaved(auth: string, ids: string[]) ={
+//   return await axios.get(
+//     "https://api.spotify.com/v1/me/tracks/contains",
+//     { ids },
+//     config(auth)
+//   )
 //   .then(res => res.data)
 //   .catch(error => {throw error})
 // }

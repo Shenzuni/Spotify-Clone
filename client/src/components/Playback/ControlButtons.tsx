@@ -1,6 +1,8 @@
-import React from "react";
+import React from "react"
 
-import { handlePlayPauseClick } from "handlers/handlePlayPauseClick";
+import { handlePrevious } from "handlers/handlePrevious"
+import { handlePlayPauseClick } from "handlers/handlePlayPauseClick"
+import { handleNext } from "handlers/handleNext"
 
 import {
   NextIcon,
@@ -9,15 +11,13 @@ import {
   PreviousIcon,
   RepeatIcon,
   ShuffleIcon,
-} from "assets/svg";
-
-import "assets/css/Playback/ControlButtons.css";
+} from "assets/svg"
 
 interface PlaybackControlButtonsProps {
-  player?: Spotify.Player;
-  auth: string;
-  playing: boolean;
-  setPlaying: React.Dispatch<React.SetStateAction<boolean>>;
+  player?: Spotify.Player
+  auth: string
+  playing: boolean
+  setPlaying: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export function PlaybackControlButtons({
@@ -27,25 +27,28 @@ export function PlaybackControlButtons({
   setPlaying,
 }: PlaybackControlButtonsProps) {
   return (
-    <div className="pb-control-buttons">
-      <button className="button-svg button-default pb-shuffle">
+    <div className="flex justify-center gap-2 mb-2">
+      <button className="btn default">
         <ShuffleIcon />
       </button>
-      <button className="button-svg button-default pb-previous">
+      <button
+        className="btn default"
+        onClick={() => handlePrevious(auth, player)}
+      >
         <PreviousIcon />
       </button>
       <button
-        className="button-svg pb-play-pause"
+        className="btn mx-2 rounded-full bg-white hover:scale-[1.06] active:scale-[none]"
         onClick={() => handlePlayPauseClick(setPlaying, auth, player)}
       >
         {playing ? <PlayIcon /> : <PauseIcon />}
       </button>
-      <button className="button-svg button-default pb-next">
+      <button className="btn default" onClick={() => handleNext(auth, player)}>
         <NextIcon />
       </button>
-      <button className="button-svg button-default pb-repeat">
+      <button className="btn default">
         <RepeatIcon />
       </button>
     </div>
-  );
+  )
 }

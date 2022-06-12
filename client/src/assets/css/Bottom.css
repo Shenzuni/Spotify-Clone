@@ -2,7 +2,7 @@
   display: flex;
 
   padding: 17px 16px;
-  background-color: #181818;
+  background-color: rgb(24, 24, 24);
   border-top: 1px solid #282828;
 }
 .pb-info {
@@ -16,7 +16,7 @@
   width: 40%;
   max-width: 722px;
 }
-.pb-extra {
+.pb-extra-controls {
   width: 30%;
   display: flex;
 }

@@ -1,36 +1,36 @@
-import { TRACK } from "utils/constants/local";
+import { TRACK } from "utils/constants/local"
 
-import { createContext, ReactNode, useState } from "react";
-import { transferPlaybackDevice } from "api/endpoints";
+import { createContext, ReactNode, useState } from "react"
+import { transferPlaybackDevice } from "api/endpoints"
 
 type PlayerContextType = {
-  player: Spotify.Player | undefined;
-  device: string | undefined;
-  track: Spotify.Track;
-  progress: number;
-  duration: number;
-  playing: boolean;
-  setPlaying: React.Dispatch<React.SetStateAction<boolean>>;
-  onPlayerReady: (player: Spotify.Player, auth: string, device: string) => void;
-  onPlayerStateChange: (state: Spotify.PlaybackState) => void;
-};
+  player: Spotify.Player | undefined
+  device: string | undefined
+  track: Spotify.Track
+  progress: number
+  duration: number
+  playing: boolean
+  setPlaying: React.Dispatch<React.SetStateAction<boolean>>
+  onPlayerReady: (player: Spotify.Player, auth: string, device: string) => void
+  onPlayerStateChange: (state: Spotify.PlaybackState) => void
+}
 
-export const PlayerContext = createContext({} as PlayerContextType);
+export const PlayerContext = createContext({} as PlayerContextType)
 
 export default function PlayerProvider({ children }: { children: ReactNode }) {
-  const [player, setPlayer] = useState<Spotify.Player>();
-  const [device, setDevice] = useState<string>();
+  const [player, setPlayer] = useState<Spotify.Player>()
+  const [device, setDevice] = useState<string>()
 
-  const [track, setTrack] = useState<Spotify.Track>(TRACK);
+  const [track, setTrack] = useState<Spotify.Track>(TRACK)
 
-  const [progress, setProgress] = useState(0);
-  const [duration, setDuration] = useState(180000);
-  const [playing, setPlaying] = useState(false);
+  const [progress, setProgress] = useState(0)
+  const [duration, setDuration] = useState(180000)
+  const [playing, setPlaying] = useState(false)
 
   function onPlayerReady(player: Spotify.Player, auth: string, device: string) {
-    setPlayer(player);
-    setDevice(device);
-    transferPlaybackDevice([device], true, auth);
+    setPlayer(player)
+    setDevice(device)
+    transferPlaybackDevice([device], true, auth)
   }
 
   function onPlayerStateChange({
@@ -39,10 +39,10 @@ export default function PlayerProvider({ children }: { children: ReactNode }) {
     paused,
     track_window: { current_track },
   }: Spotify.PlaybackState) {
-    setTrack(current_track);
-    setProgress(position);
-    setDuration(duration);
-    setPlaying(!paused);
+    setTrack(current_track)
+    setProgress(position)
+    setDuration(duration)
+    setPlaying(!paused)
   }
 
   return (
@@ -61,5 +61,5 @@ export default function PlayerProvider({ children }: { children: ReactNode }) {
     >
       {children}
     </PlayerContext.Provider>
-  );
+  )
 }

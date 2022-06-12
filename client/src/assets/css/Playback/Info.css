@@ -3,14 +3,17 @@
   justify-content: start;
   align-items: center;
 }
-.pb-info a,
-.pb-info a img {
+.bottom-pb-img,
+.bottom-pb-img img {
   width: 56px;
   height: 56px;
 }
+.bottom-pb-img {
+  margin-right: 16px;
+}
 .pb-track {
-  margin: 0 14px;
-
+  margin-right: 14px;
+  margin-left: -2px;
   overflow: hidden;
   white-space: nowrap;
 }
@@ -30,6 +33,7 @@
   text-decoration: underline;
   cursor: pointer;
 }
-.pb-track-name, .pb-track-artists {
+.pb-track-name,
+.pb-track-artists {
   padding-right: 6px;
 }
