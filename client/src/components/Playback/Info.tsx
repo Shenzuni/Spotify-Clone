@@ -4,7 +4,7 @@ import { SavedIcon, SaveIcon } from "assets/svg"
 
 import { PlaybackImage } from "components/Playback/Image"
 
-import { handleCheckSaved, handleToggleSaved } from "handlers"
+import { handleCheckSaved } from "handlers"
 
 interface PlaybackInfoProps {
   auth: string
