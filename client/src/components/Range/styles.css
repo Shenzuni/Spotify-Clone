@@ -1,0 +1,12 @@
+.webkit-range::-webkit-slider-thumb {
+  appearance: none;
+
+  width: 12px;
+  height: 12px;
+  border-radius: 12px;
+
+  pointer-events: none;
+}
+.outer-webkit-range:hover .webkit-range::-webkit-slider-thumb {
+  background-color: white;
+}

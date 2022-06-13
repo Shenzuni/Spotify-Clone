@@ -1,5 +1,5 @@
-import "assets/css/Sidebar.css"
 import { PlaybackImage } from "components/Playback/Image"
+
 import { useAuthContext } from "hooks/useAuth"
 import { usePlayerContext } from "hooks/usePlayer"
 
@@ -12,8 +12,8 @@ export default function Sidebar({ pbToggleImg, setPbToggleImg }: SidebarProps) {
   const { auth } = useAuthContext()
   const { track } = usePlayerContext()
   return (
-    <div className="flex flex-col justify-between bg-[#000101] mr-0.5">
-      <div className=""></div>
+    <div className="split-left flex flex-col justify-between bg-[#000101] mr-0.5">
+      <div></div>
       {pbToggleImg && auth && (
         <div className="w-full">
           <PlaybackImage

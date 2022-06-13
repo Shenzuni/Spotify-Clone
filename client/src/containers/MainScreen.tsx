@@ -14,7 +14,7 @@ export default function MainScreen() {
   const [pbToggleImg, setPbToggleImg] = useState(true)
 
   return (
-    <div className="flex flex-col h-screen w-screen">
+    <div className="split flex flex-col h-screen w-screen">
       <Top pbToggleImg={pbToggleImg} setPbToggleImg={setPbToggleImg} />
       <Bottom pbToggleImg={pbToggleImg} setPbToggleImg={setPbToggleImg} />
     </div>

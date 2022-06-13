@@ -1,4 +1,4 @@
-import { useCallback, useLayoutEffect, useState } from "react"
+import { useState, useCallback } from "react"
 
 import Sidebar from "containers/Sidebar"
 import MainContent from "containers/MainContent"

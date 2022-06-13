@@ -18,6 +18,10 @@ export function PlaybackExtraControls({
   const [volume, setVolume] = useState(0)
 
   useEffect(() => {
+    player?.getVolume().then((res) => setVolume(res * 100))
+  }, [player, setVolume])
+
+  useEffect(() => {
     player && player.setVolume(volume / 100)
   }, [volume])
 
@@ -30,22 +34,14 @@ export function PlaybackExtraControls({
 
   return (
     <div className="flex w-[30%] justify-end items-center">
-      <button className="btn default">
-        <LyricsIcon />
-      </button>
-      <button className="btn default">
-        <QueueIcon />
-      </button>
-      <button className="btn default">
-        <DevicesIcon />
-      </button>
+      <button className="btn default">{LyricsIcon}</button>
+      <button className="btn default">{QueueIcon}</button>
+      <button className="btn default">{DevicesIcon}</button>
       <div className="flex items-center min-w-[125px]">
         <button className="btn default"></button>
         <Range value={volume} max={100} onChange={onChange} />
       </div>
-      <button className="btn default ">
-        <FullscrenIcon />
-      </button>
+      <button className="btn default ">{FullscrenIcon}</button>
     </div>
   )
 }

@@ -8,8 +8,6 @@ import { PlaybackControlRange } from "components/Playback/ControlRange"
 
 import { PlaybackExtraControls } from "components/Playback/ExtraControls"
 
-import "assets/css/Bottom.css"
-
 interface BottomProps {
   pbToggleImg: boolean
   setPbToggleImg: React.Dispatch<React.SetStateAction<boolean>>
@@ -17,9 +15,19 @@ interface BottomProps {
 
 export default function Bottom({ pbToggleImg, setPbToggleImg }: BottomProps) {
   const { auth } = useAuthContext()
-  const { player, track, progress, duration, playing, setPlaying } =
-    usePlayerContext()
-
+  const {
+    player,
+    track,
+    avgColor,
+    progress,
+    duration,
+    playing,
+    setPlaying,
+    shuffle,
+    setShuffle,
+    repeat,
+    setRepeat,
+  } = usePlayerContext()
   return (
     <div className="flex items-center px-4 min-h-[91px] bg-[#181818] border-t border-t-[#282828]">
       {auth && (
@@ -36,6 +44,10 @@ export default function Bottom({ pbToggleImg, setPbToggleImg }: BottomProps) {
               player={player}
               playing={playing}
               setPlaying={setPlaying}
+              shuffle={shuffle}
+              setShuffle={setShuffle}
+              repeat={repeat}
+              setRepeat={setRepeat}
             />
             <PlaybackControlRange
               auth={auth}

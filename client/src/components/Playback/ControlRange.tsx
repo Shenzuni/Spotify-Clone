@@ -4,6 +4,8 @@ import { Range } from "components/Range"
 
 import { display_mm_ss } from "utils/helpers/display_mm_ss"
 
+import { usePlayerContext } from "hooks/usePlayer"
+
 interface PlaybackControlRangeProps {
   auth: string
   player?: Spotify.Player
@@ -23,6 +25,8 @@ export function PlaybackControlRange({
 }: PlaybackControlRangeProps) {
   const [progress, setProgress] = useState(0)
   const [holdingRange, setHoldingRange] = useState(false)
+
+  const { avgColor } = usePlayerContext()
 
   const progress_s = Math.floor(progress / 1000)
   const duration_s = Math.floor(duration / 1000)
@@ -78,6 +82,7 @@ export function PlaybackControlRange({
       <Range
         value={progress_s}
         max={duration_s}
+        color={avgColor}
         onChange={onChange}
         onMouseDown={onMouseDown}
         onClick={onClick}

@@ -1,9 +1,9 @@
-import "assets/css/Range.css"
-import React, { useEffect, useState } from "react"
+import "./styles.css"
 
 interface RangeProps {
   value: number
   max: number
+  color?: string
   onChange?: Function
   onMouseDown?: Function
   onClick?: Function
@@ -12,12 +12,13 @@ interface RangeProps {
 export function Range({
   value,
   max,
+  color,
   onChange,
   onMouseDown,
   onClick,
 }: RangeProps) {
   return (
-    <div className="webkit group flex items-center relative w-full h-3">
+    <div className="outer-webkit-range group flex items-center relative w-full h-3">
       <div className="absolute w-[inherit] h-1 rounded-full bg-[#5e5e5e]"></div>
       <div
         className="max-w-full h-1 absolute rounded-full bg-white group-hover:bg-[#1ed760]"
@@ -26,7 +27,7 @@ export function Range({
         }}
       ></div>
       <input
-        className="range absolute w-[calc(12px+100%)] h-1 -translate-x-1.5 appearance-none
+        className="webkit-range absolute w-[calc(12px+100%)] h-1 -translate-x-1.5 appearance-none
           overflow-visible m-0 bg-transparent"
         type="range"
         min="0"

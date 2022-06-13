@@ -12,20 +12,19 @@ export function PlaybackImage({
   track,
 }: PlaybackImageProps) {
   return (
-    <div className="flex items-end relative h-[inherit] w-[inherit] group">
+    <div className="group flex items-end relative h-[inherit] w-[inherit]">
       <button
-        className="flex justify-center items-center absolute top-[5px] right-[5px] z-1 h-6 w-6 
-          rounded-full bg-[#000000b3] invisible group-hover:visible hover:scale-[1.1] hover:bg-[#000000cc] 
-          img-toggle-hover"
+        className="toggle-pb-img invisible flex justify-center items-center absolute top-[5px] right-[5px] z-1 h-6 w-6 
+          rounded-full bg-[#000000b3] hover:scale-[1.1] hover:bg-[#000000cc] group-hover:visible"
         onClick={() => {
           setIsToggled((prev) => !prev)
         }}
       >
-        {!isToggled ? <ToggleIcon /> : <InvertedToggleIcon />}
+        {!isToggled ? ToggleIcon : InvertedToggleIcon}
       </button>
       <a className="h-[inherit] w-[inherit]" href={track.album.uri}>
         <img
-          className="h-[inherit] w-[inherit]"
+          className="h-[inherit] w-[inherit] hover:cursor-pointer"
           alt="album"
           src={track.album.images[isToggled ? 0 : 1].url}
           title={track.album.name}

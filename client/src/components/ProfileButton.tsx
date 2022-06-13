@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-import handleGetCurrentProfile from "handlers/handleGetCurrentProfile"
+import { handleGetCurrentProfile } from "handlers"
 
 import { DropdownIcon, InvertedDropdownIcon } from "assets/svg"
 
@@ -32,7 +32,7 @@ export function ProfileButton({ auth }: ProfileButtonProps) {
       <img className="h-7 w-7 rounded-full" alt="profile" src={image} />
       <span>{name}</span>
       <div className="mr-1.5">
-        {dropdown ? <DropdownIcon /> : <InvertedDropdownIcon />}
+        {dropdown ? DropdownIcon : InvertedDropdownIcon}
       </div>
     </button>
   ) : null

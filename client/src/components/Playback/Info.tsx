@@ -2,7 +2,9 @@ import { useEffect, useState } from "react"
 
 import { SavedIcon, SaveIcon } from "assets/svg"
 
-import { PlaybackImage } from "./Image"
+import { PlaybackImage } from "components/Playback/Image"
+
+import { handleCheckSaved, handleToggleSaved } from "handlers"
 
 interface PlaybackInfoProps {
   auth: string
@@ -17,9 +19,17 @@ export function PlaybackInfo({
   pbToggleImg,
   setPbToggleImg,
 }: PlaybackInfoProps) {
-  const [saved, setSaved] = useState(true)
+  const [saved, setSaved] = useState(false)
 
   useEffect(() => {
+    if (track.id && auth) {
+    }
+  }, [saved])
+
+  useEffect(() => {
+    if (track.id && auth) {
+      handleCheckSaved(auth, [track.id]).then((res) => setSaved(res[0]))
+    }
     document.title =
       track.name +
       " • " +
@@ -30,27 +40,23 @@ export function PlaybackInfo({
       })
   }, [track])
 
-  const Artists = () => (
-    <>
-      {track.artists.map((artist, index) => (
-        <span key={artist.uri}>
-          {index > 0 && ", "}
-          <a
-            className="hover:cursor-pointer hover:underline hover:text-white"
-            title={artist.name}
-            href={artist.uri}
-          >
-            {artist.name}
-          </a>
-        </span>
-      ))}
-    </>
-  )
+  const Artists = track.artists.map((artist, index) => (
+    <span key={artist.uri}>
+      {index > 0 && ", "}
+      <a
+        className="pb-track-artist hover:cursor-pointer hover:underline hover:text-white"
+        title={artist.name}
+        href={artist.uri}
+      >
+        {artist.name}
+      </a>
+    </span>
+  ))
 
   return (
-    <div className="flex w-[30%] justify-start items-center">
+    <div className="pb-info flex w-[30%] justify-start items-center">
       {!pbToggleImg && (
-        <div className="w-14 h-14 mr-4">
+        <div className="bottom-img-outer w-14 h-14 mr-4">
           <PlaybackImage
             isToggled={pbToggleImg}
             setIsToggled={setPbToggleImg}
@@ -58,25 +64,24 @@ export function PlaybackInfo({
           />
         </div>
       )}
-      <div className="-ml-0.5 overflow-hidden">
-        <div className="pr-5 text-sm hover:cursor-pointer hover:underline hover:text-white">
+      <div className="pb-track-info -ml-0.5 overflow-hidden">
+        <div className="pb-track-title pr-5 text-sm hover:cursor-pointer hover:underline hover:text-white">
           <a title={track.name} href={track.uri}>
             {track.name}
           </a>
         </div>
-        <div className="pr-5 text-[0.6875rem] text-[#b3b3b3]">
-          <Artists />
+        <div className="pb-track-artists pr-5 text-[0.6875rem] text-[#b3b3b3]">
+          {Artists}
         </div>
       </div>
-      {saved ? (
-        <button className="btn default">
-          <SavedIcon />
-        </button>
-      ) : (
-        <button className="btn">
-          <SaveIcon />
-        </button>
-      )}
+      <button
+        className="pb-track-toggle-saved btn default"
+        onClick={() => {
+          setSaved((prev) => !prev)
+        }}
+      >
+        {saved ? SavedIcon : SaveIcon}
+      </button>
     </div>
   )
 }
