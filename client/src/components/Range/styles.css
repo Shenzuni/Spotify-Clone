@@ -7,6 +7,13 @@
 
   pointer-events: none;
 }
-.outer-webkit-range:hover .webkit-range::-webkit-slider-thumb {
+.outer-webkit-range:hover .webkit-range::-webkit-slider-thumb,
+.outer-webkit-range:hover
+  + .outer-webkit-range
+  .webkit-range::-webkit-slider-thumb {
   background-color: white;
+}
+.outer-webkit-range:hover .webkit-range-progress,
+.outer-webkit-range:hover + .outer-webkit-range .webkit-range-progress {
+  background-color: #1ed760;
 }

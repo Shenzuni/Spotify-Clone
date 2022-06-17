@@ -1,9 +1,10 @@
 import { useState, useCallback } from "react"
 
 import Sidebar from "containers/Sidebar"
-import MainContent from "containers/MainContent"
+import { MainContent } from "containers/MainContent"
 
 import Split from "react-split"
+import { Header } from "components/Header"
 
 interface TopProps {
   pbToggleImg: boolean
@@ -32,7 +33,10 @@ export default function Top({ pbToggleImg, setPbToggleImg }: TopProps) {
       snapOffset={0}
     >
       <Sidebar pbToggleImg={pbToggleImg} setPbToggleImg={setPbToggleImg} />
-      <MainContent />
+      <div className="split-right bg-[#121212] relative">
+        <Header />
+        <MainContent />
+      </div>
     </Split>
   )
 }

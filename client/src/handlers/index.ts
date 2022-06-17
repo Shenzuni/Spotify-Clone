@@ -1,7 +1,10 @@
 import { code_url } from "../utils/constants/code_url"
-import { PROFILE } from "utils/constants/local"
-import { currentUsersProfile } from "api/endpoints"
-import { CheckTrackSaved } from "api/endpoints"
+import {
+  currentUsersProfile,
+  SaveTracks,
+  UnsaveTracks,
+  CheckSavedTracks,
+} from "api/endpoints"
 
 declare global {
   interface Window {
@@ -19,25 +22,22 @@ export function handleLogin(setAuth: (auth: string) => void) {
 
 export async function handleGetCurrentProfile(
   auth: string,
-  setProfile: (name?: string, image?: string) => void
+  setProfile: (profile: SpotifyApi.CurrentUsersProfileResponse) => void
 ) {
-  let data
-  if (auth === "local") {
-    data = PROFILE
-  } else {
-    data = await currentUsersProfile(auth).then((res) => res)
-  }
-
-  const name = data.display_name
-  const image = data.images && data.images[0].url
-
-  setProfile(name, image)
+  const profile = await currentUsersProfile(auth)
+  setProfile(profile)
 }
 
-export async function handleCheckSaved(auth: string, ids: string[]) {
+export async function handleCheckSavedTracks(auth: string, ids: string[]) {
   if (auth === "local") {
     return ids.map(() => false)
   } else {
-    return await CheckTrackSaved(auth, ids.join()).then((res) => res)
+    return await CheckSavedTracks(auth, ids.join()).then((res) => res)
   }
+}
+export async function handleSaveTracks(auth: string, ids: string[]) {
+  SaveTracks(auth, ids.join())
+}
+export function handleUnsaveTracks(auth: string, ids: string[]) {
+  UnsaveTracks(auth, ids.join())
 }

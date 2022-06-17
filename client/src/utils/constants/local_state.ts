@@ -1,0 +1,500 @@
+export const STATE: Spotify.PlaybackState = {
+  timestamp: 1655496655569,
+  context: {
+    uri: "spotify:playlist:37i9dQZF1EpA3oNt0C7Teo",
+    metadata: {
+      current_item: {
+        content_type: "TRACK",
+        artists: [
+          {
+            name: "Brand New",
+            uri: "spotify:artist:168dgYui7ExaU612eooDF1",
+            url: "https://api.spotify.com/v1/artists/168dgYui7ExaU612eooDF1",
+          },
+        ],
+        images: [
+          {
+            size: "UNKNOWN",
+            url: "https://i.scdn.co/image/ab67616d00001e02865eb12a0dad94b45e6653df",
+            height: 300,
+            width: 300,
+          },
+          {
+            size: "SMALL",
+            url: "https://i.scdn.co/image/ab67616d00004851865eb12a0dad94b45e6653df",
+            height: 64,
+            width: 64,
+          },
+          {
+            size: "LARGE",
+            url: "https://i.scdn.co/image/ab67616d0000b273865eb12a0dad94b45e6653df",
+            height: 640,
+            width: 640,
+          },
+        ],
+        group: {
+          name: "Daisy",
+          uri: "spotify:album:5NS2SVXmgesBijvhC1hdtr",
+          url: "https://api.spotify.com/v1/albums/5NS2SVXmgesBijvhC1hdtr",
+        },
+        name: "Vices",
+        uri: "spotify:track:1mejM9fPAcOrOkPAjehsCa",
+        url: "https://api.spotify.com/v1/tracks/1mejM9fPAcOrOkPAjehsCa",
+        uid: "40477d08a369a560",
+        estimated_duration: 203626,
+      },
+      previous_items: [
+        {
+          content_type: "TRACK",
+          artists: [
+            {
+              name: "Citizen",
+              uri: "spotify:artist:0znuUIjvP0LXEslfaq0Nor",
+              url: "https://api.spotify.com/v1/artists/0znuUIjvP0LXEslfaq0Nor",
+            },
+          ],
+          images: [
+            {
+              size: "UNKNOWN",
+              url: "https://i.scdn.co/image/ab67616d00001e02eab16e17b9233032b64ce6b5",
+              height: 300,
+              width: 300,
+            },
+            {
+              size: "SMALL",
+              url: "https://i.scdn.co/image/ab67616d00004851eab16e17b9233032b64ce6b5",
+              height: 64,
+              width: 64,
+            },
+            {
+              size: "LARGE",
+              url: "https://i.scdn.co/image/ab67616d0000b273eab16e17b9233032b64ce6b5",
+              height: 640,
+              width: 640,
+            },
+          ],
+          group: {
+            name: "Everybody Is Going To Heaven",
+            uri: "spotify:album:6bxSsCSbG0t6ZD2kMzYySS",
+            url: "https://api.spotify.com/v1/albums/6bxSsCSbG0t6ZD2kMzYySS",
+          },
+          name: "Ring of Chain",
+          uri: "spotify:track:67ZTqCthDDb8jMy5De2fDK",
+          url: "https://api.spotify.com/v1/tracks/67ZTqCthDDb8jMy5De2fDK",
+          uid: "95eea30ae71637b7",
+          estimated_duration: 335043,
+        },
+        {
+          content_type: "TRACK",
+          artists: [
+            {
+              name: "Citizen",
+              uri: "spotify:artist:0znuUIjvP0LXEslfaq0Nor",
+              url: "https://api.spotify.com/v1/artists/0znuUIjvP0LXEslfaq0Nor",
+            },
+          ],
+          images: [
+            {
+              size: "UNKNOWN",
+              url: "https://i.scdn.co/image/ab67616d00001e02611087f57611c8bfd1b66667",
+              height: 300,
+              width: 300,
+            },
+            {
+              size: "SMALL",
+              url: "https://i.scdn.co/image/ab67616d00004851611087f57611c8bfd1b66667",
+              height: 64,
+              width: 64,
+            },
+            {
+              size: "LARGE",
+              url: "https://i.scdn.co/image/ab67616d0000b273611087f57611c8bfd1b66667",
+              height: 640,
+              width: 640,
+            },
+          ],
+          group: {
+            name: "Life In Your Glass World",
+            uri: "spotify:album:07Pv7j17v7JX1NEbZidg84",
+            url: "https://api.spotify.com/v1/albums/07Pv7j17v7JX1NEbZidg84",
+          },
+          name: "I Want to Kill You",
+          uri: "spotify:track:57XHBbh5lCsIdgStesXI4k",
+          url: "https://api.spotify.com/v1/tracks/57XHBbh5lCsIdgStesXI4k",
+          uid: "d2264fa28d5842cb",
+          estimated_duration: 192106,
+        },
+      ],
+      next_items: [
+        {
+          content_type: "TRACK",
+          artists: [
+            {
+              name: "Basement",
+              uri: "spotify:artist:4DUQBYAyOTZotSEdKhaf6c",
+              url: "https://api.spotify.com/v1/artists/4DUQBYAyOTZotSEdKhaf6c",
+            },
+          ],
+          images: [
+            {
+              size: "UNKNOWN",
+              url: "https://i.scdn.co/image/ab67616d00001e02042a795b1fb9bf6efc9d5b21",
+              height: 300,
+              width: 300,
+            },
+            {
+              size: "SMALL",
+              url: "https://i.scdn.co/image/ab67616d00004851042a795b1fb9bf6efc9d5b21",
+              height: 64,
+              width: 64,
+            },
+            {
+              size: "LARGE",
+              url: "https://i.scdn.co/image/ab67616d0000b273042a795b1fb9bf6efc9d5b21",
+              height: 640,
+              width: 640,
+            },
+          ],
+          group: {
+            name: "Promise Everything (Deluxe)",
+            uri: "spotify:album:2Ic7SVaZu6loRXczS4VfYP",
+            url: "https://api.spotify.com/v1/albums/2Ic7SVaZu6loRXczS4VfYP",
+          },
+          name: "Cloud",
+          uri: "spotify:track:31gZdwjFmjGM0tpG8STMdY",
+          url: "https://api.spotify.com/v1/tracks/31gZdwjFmjGM0tpG8STMdY",
+          uid: "7be2a47a0edeef78",
+          estimated_duration: 70600,
+        },
+        {
+          content_type: "TRACK",
+          artists: [
+            {
+              name: "Imperial Circus Dead Decadence",
+              uri: "spotify:artist:5bgW1AysTzHav20snaPkyp",
+              url: "https://api.spotify.com/v1/artists/5bgW1AysTzHav20snaPkyp",
+            },
+          ],
+          images: [
+            {
+              size: "UNKNOWN",
+              url: "https://i.scdn.co/image/ab67616d00001e02f02911b93ef40fe9896312fe",
+              height: 300,
+              width: 300,
+            },
+            {
+              size: "SMALL",
+              url: "https://i.scdn.co/image/ab67616d00004851f02911b93ef40fe9896312fe",
+              height: 64,
+              width: 64,
+            },
+            {
+              size: "LARGE",
+              url: "https://i.scdn.co/image/ab67616d0000b273f02911b93ef40fe9896312fe",
+              height: 640,
+              width: 640,
+            },
+          ],
+          group: {
+            name: "黄泉より聴こゆ、皇国の燈と焔の少女。",
+            uri: "spotify:album:1KQPuhtXXec6vVVFqoXq2q",
+            url: "https://api.spotify.com/v1/albums/1KQPuhtXXec6vVVFqoXq2q",
+          },
+          name: "神罰を辿り狂骨に至る",
+          uri: "spotify:track:0SoT2zZLZYxhWf4hyuUWIe",
+          url: "https://api.spotify.com/v1/tracks/0SoT2zZLZYxhWf4hyuUWIe",
+          uid: "626dd69edb00328b",
+          estimated_duration: 266804,
+        },
+      ],
+      options: {
+        repeat_mode: "OFF",
+        shuffled: true,
+      },
+      restrictions: {
+        pause: [],
+        resume: [],
+        seek: [],
+        skip_next: [],
+        skip_prev: [],
+        toggle_repeat_context: [],
+        toggle_repeat_track: [],
+        toggle_shuffle: [],
+        peek_next: [],
+        peek_prev: [],
+      },
+      name: "On Repeat",
+      uri: "spotify:playlist:37i9dQZF1EpA3oNt0C7Teo",
+      url: "context://spotify:playlist:37i9dQZF1EpA3oNt0C7Teo",
+    },
+  },
+  duration: 203673,
+  paused: true,
+  shuffle: true,
+  position: 151015,
+  loading: false,
+  repeat_mode: 0,
+  track_window: {
+    current_track: {
+      id: "1mejM9fPAcOrOkPAjehsCa",
+      uri: "spotify:track:1mejM9fPAcOrOkPAjehsCa",
+      type: "track",
+      uid: "40477d08a369a560",
+      linked_from: {
+        uri: null,
+        id: null,
+      },
+      media_type: "audio",
+      track_type: "audio",
+      name: "Vices",
+      duration_ms: 203673,
+      artists: [
+        {
+          name: "Brand New",
+          uri: "spotify:artist:168dgYui7ExaU612eooDF1",
+          url: "https://api.spotify.com/v1/artists/168dgYui7ExaU612eooDF1",
+        },
+      ],
+      album: {
+        name: "Daisy",
+        uri: "spotify:album:5NS2SVXmgesBijvhC1hdtr",
+        images: [
+          {
+            size: "UNKNOWN",
+            url: "https://i.scdn.co/image/ab67616d00001e02865eb12a0dad94b45e6653df",
+            height: 300,
+            width: 300,
+          },
+          {
+            size: "SMALL",
+            url: "https://i.scdn.co/image/ab67616d00004851865eb12a0dad94b45e6653df",
+            height: 64,
+            width: 64,
+          },
+          {
+            size: "LARGE",
+            url: "https://i.scdn.co/image/ab67616d0000b273865eb12a0dad94b45e6653df",
+            height: 640,
+            width: 640,
+          },
+        ],
+      },
+      is_playable: true,
+    },
+    next_tracks: [
+      {
+        id: "31gZdwjFmjGM0tpG8STMdY",
+        uri: "spotify:track:31gZdwjFmjGM0tpG8STMdY",
+        type: "track",
+        uid: "7be2a47a0edeef78",
+        linked_from: {
+          uri: null,
+          id: null,
+        },
+        media_type: "video",
+        track_type: "video",
+        name: "Cloud",
+        duration_ms: 70600,
+        artists: [
+          {
+            name: "Basement",
+            uri: "spotify:artist:4DUQBYAyOTZotSEdKhaf6c",
+            url: "https://api.spotify.com/v1/artists/4DUQBYAyOTZotSEdKhaf6c",
+          },
+        ],
+        album: {
+          name: "Promise Everything (Deluxe)",
+          uri: "spotify:album:2Ic7SVaZu6loRXczS4VfYP",
+          images: [
+            {
+              size: "UNKNOWN",
+              url: "https://i.scdn.co/image/ab67616d00001e02042a795b1fb9bf6efc9d5b21",
+              height: 300,
+              width: 300,
+            },
+            {
+              size: "SMALL",
+              url: "https://i.scdn.co/image/ab67616d00004851042a795b1fb9bf6efc9d5b21",
+              height: 64,
+              width: 64,
+            },
+            {
+              size: "LARGE",
+              url: "https://i.scdn.co/image/ab67616d0000b273042a795b1fb9bf6efc9d5b21",
+              height: 640,
+              width: 640,
+            },
+          ],
+        },
+        is_playable: true,
+      },
+      {
+        id: "0SoT2zZLZYxhWf4hyuUWIe",
+        uri: "spotify:track:0SoT2zZLZYxhWf4hyuUWIe",
+        type: "track",
+        uid: "626dd69edb00328b",
+        linked_from: {
+          uri: null,
+          id: null,
+        },
+        media_type: "video",
+        track_type: "video",
+        name: "神罰を辿り狂骨に至る",
+        duration_ms: 266804,
+        artists: [
+          {
+            name: "Imperial Circus Dead Decadence",
+            uri: "spotify:artist:5bgW1AysTzHav20snaPkyp",
+            url: "https://api.spotify.com/v1/artists/5bgW1AysTzHav20snaPkyp",
+          },
+        ],
+        album: {
+          name: "黄泉より聴こゆ、皇国の燈と焔の少女。",
+          uri: "spotify:album:1KQPuhtXXec6vVVFqoXq2q",
+          images: [
+            {
+              size: "UNKNOWN",
+              url: "https://i.scdn.co/image/ab67616d00001e02f02911b93ef40fe9896312fe",
+              height: 300,
+              width: 300,
+            },
+            {
+              size: "SMALL",
+              url: "https://i.scdn.co/image/ab67616d00004851f02911b93ef40fe9896312fe",
+              height: 64,
+              width: 64,
+            },
+            {
+              size: "LARGE",
+              url: "https://i.scdn.co/image/ab67616d0000b273f02911b93ef40fe9896312fe",
+              height: 640,
+              width: 640,
+            },
+          ],
+        },
+        is_playable: true,
+      },
+    ],
+    previous_tracks: [
+      {
+        id: "67ZTqCthDDb8jMy5De2fDK",
+        uri: "spotify:track:67ZTqCthDDb8jMy5De2fDK",
+        type: "track",
+        uid: "95eea30ae71637b7",
+        linked_from: {
+          uri: null,
+          id: null,
+        },
+        media_type: "video",
+        track_type: "video",
+        name: "Ring of Chain",
+        duration_ms: 335043,
+        artists: [
+          {
+            name: "Citizen",
+            uri: "spotify:artist:0znuUIjvP0LXEslfaq0Nor",
+            url: "https://api.spotify.com/v1/artists/0znuUIjvP0LXEslfaq0Nor",
+          },
+        ],
+        album: {
+          name: "Everybody Is Going To Heaven",
+          uri: "spotify:album:6bxSsCSbG0t6ZD2kMzYySS",
+          images: [
+            {
+              size: "UNKNOWN",
+              url: "https://i.scdn.co/image/ab67616d00001e02eab16e17b9233032b64ce6b5",
+              height: 300,
+              width: 300,
+            },
+            {
+              size: "SMALL",
+              url: "https://i.scdn.co/image/ab67616d00004851eab16e17b9233032b64ce6b5",
+              height: 64,
+              width: 64,
+            },
+            {
+              size: "LARGE",
+              url: "https://i.scdn.co/image/ab67616d0000b273eab16e17b9233032b64ce6b5",
+              height: 640,
+              width: 640,
+            },
+          ],
+        },
+        is_playable: true,
+      },
+      {
+        id: "57XHBbh5lCsIdgStesXI4k",
+        uri: "spotify:track:57XHBbh5lCsIdgStesXI4k",
+        type: "track",
+        uid: "d2264fa28d5842cb",
+        linked_from: {
+          uri: null,
+          id: null,
+        },
+        media_type: "video",
+        track_type: "video",
+        name: "I Want to Kill You",
+        duration_ms: 192106,
+        artists: [
+          {
+            name: "Citizen",
+            uri: "spotify:artist:0znuUIjvP0LXEslfaq0Nor",
+            url: "https://api.spotify.com/v1/artists/0znuUIjvP0LXEslfaq0Nor",
+          },
+        ],
+        album: {
+          name: "Life In Your Glass World",
+          uri: "spotify:album:07Pv7j17v7JX1NEbZidg84",
+          images: [
+            {
+              size: "UNKNOWN",
+              url: "https://i.scdn.co/image/ab67616d00001e02611087f57611c8bfd1b66667",
+              height: 300,
+              width: 300,
+            },
+            {
+              size: "SMALL",
+              url: "https://i.scdn.co/image/ab67616d00004851611087f57611c8bfd1b66667",
+              height: 64,
+              width: 64,
+            },
+            {
+              size: "LARGE",
+              url: "https://i.scdn.co/image/ab67616d0000b273611087f57611c8bfd1b66667",
+              height: 640,
+              width: 640,
+            },
+          ],
+        },
+        is_playable: true,
+      },
+    ],
+  },
+  restrictions: {
+    disallow_seeking_reasons: [],
+    disallow_skipping_next_reasons: [],
+    disallow_skipping_prev_reasons: [],
+    disallow_toggling_repeat_context_reasons: [],
+    disallow_toggling_repeat_track_reasons: [],
+    disallow_toggling_shuffle_reasons: [],
+    disallow_peeking_next_reasons: [],
+    disallow_peeking_prev_reasons: [],
+    disallow_pausing_reasons: ["already_paused"],
+  },
+  disallows: {
+    seeking: false,
+    skipping_next: false,
+    skipping_prev: false,
+    toggling_repeat_context: false,
+    toggling_repeat_track: false,
+    toggling_shuffle: false,
+    peeking_next: false,
+    peeking_prev: false,
+    pausing: true,
+  },
+  playback_id: "7d17a37e76e78b4c2a1fb70e81ddfbae",
+  playback_quality: "VERY_HIGH",
+  playback_features: {
+    hifi_status: "NONE",
+  },
+}

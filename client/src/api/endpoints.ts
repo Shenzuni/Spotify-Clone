@@ -48,7 +48,7 @@ export async function TransferPlaybackDevice(
       { device_ids, play },
       config(auth)
     )
-    .catch(() => TransferPlaybackDevice(device_ids, play, auth))
+    .catch((e) => console.log(e))
 }
 // export const GetPlaybackDevice = async (auth) => {
 //   return await axios({
@@ -61,7 +61,7 @@ export async function TransferPlaybackDevice(
 //   .then(res => res.data)
 //   .catch(error => {throw error})
 // }
-export async function CheckTrackSaved(auth: string, ids: string) {
+export async function CheckSavedTracks(auth: string, ids: string) {
   return await axios
     .get<SpotifyApi.CheckUsersSavedTracksResponse>(
       "https://api.spotify.com/v1/me/tracks/contains",
@@ -72,35 +72,29 @@ export async function CheckTrackSaved(auth: string, ids: string) {
       throw error
     })
 }
-// export const SaveTracks = async (auth, ids) => {
-//   return await axios ({
-//     url: "https://api.spotify.com/v1/me/tracks",
-//     method: "put",
-//     params: { ids },
-//     headers: {
-//       Authorization: "Bearer " + auth
-//     }
-//   })
-// }
-// export const UnsaveTracks = async (auth, ids) => {
-//   return await axios ({
-//     url: "https://api.spotify.com/v1/me/tracks",
-//     method: "delete",
-//     params: { ids },
-//     headers: {
-//       Authorization: "Bearer " + auth
-//     }
-//   })
-// }
-export function SetPlaybackShuffle(auth: string, state: boolean) {
+export async function SaveTracks(auth: string, ids: string) {
+  return await axios.put<SpotifyApi.VoidResponse>(
+    "https://api.spotify.com/v1/me/tracks",
+    null,
+    config(auth, { ids })
+  )
+}
+export async function UnsaveTracks(auth: string, ids: string) {
+  return await axios.delete<SpotifyApi.VoidResponse>(
+    "https://api.spotify.com/v1/me/tracks",
+    config(auth, { ids })
+  )
+}
+export async function SetPlaybackShuffle(auth: string, state: boolean) {
   axios.put<SpotifyApi.VoidResponse>(
     "https://api.spotify.com/v1/me/player/shuffle",
     null,
     config(auth, { state })
   )
 }
-export function SetPlaybackRepeat(auth: string, repeat: number) {
+export async function SetPlaybackRepeat(auth: string, repeat: number) {
   const state = repeat === 0 ? "off" : repeat === 1 ? "context" : "track"
+  console.log(state)
   axios.put<SpotifyApi.VoidResponse>(
     "https://api.spotify.com/v1/me/player/repeat",
     null,

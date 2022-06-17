@@ -1,12 +1,11 @@
 import { useState } from "react"
 
 import { handleLogin } from "handlers"
+import { useAuthContext } from "hooks/useAuth"
 
-interface LoginButtonProps {
-  setAuth: (auth: string) => void
-}
+export function LoginButton() {
+  const { setAuth } = useAuthContext()
 
-export function LoginButton({ setAuth }: LoginButtonProps) {
   const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout>()
 
   return (

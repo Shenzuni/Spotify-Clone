@@ -1,21 +1,23 @@
 import { ToggleIcon, InvertedToggleIcon } from "assets/svg"
+import { usePlayerContext } from "hooks/usePlayer"
 
 interface PlaybackImageProps {
   isToggled: boolean
   setIsToggled: React.Dispatch<React.SetStateAction<boolean>>
-  track: Spotify.Track
 }
 
-export function PlaybackImage({
-  isToggled,
-  setIsToggled,
-  track,
-}: PlaybackImageProps) {
+export function PlaybackImage({ isToggled, setIsToggled }: PlaybackImageProps) {
+  //player states
+  const { state } = usePlayerContext()
+  const {
+    track_window: { current_track: track },
+  } = state
+
   return (
-    <div className="group flex items-end relative h-[inherit] w-[inherit]">
+    <div className="group relative h-[inherit] w-[inherit]">
       <button
-        className="toggle-pb-img invisible flex justify-center items-center absolute top-[5px] right-[5px] z-1 h-6 w-6 
-          rounded-full bg-[#000000b3] hover:scale-[1.1] hover:bg-[#000000cc] group-hover:visible"
+        className="toggle-pb-img invisible flex justify-center items-center absolute top-[5px] right-[5px]
+        z-1 h-6 w-6 rounded-full bg-[#000000b3] hover:scale-[1.1] hover:bg-[#000000cc] group-hover:visible"
         onClick={() => {
           setIsToggled((prev) => !prev)
         }}

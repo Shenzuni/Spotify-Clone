@@ -1,34 +1,42 @@
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 
-import { SavedIcon, SaveIcon } from "assets/svg"
+import { useAuthContext } from "hooks/useAuth"
+import { usePlayerContext } from "hooks/usePlayer"
 
 import { PlaybackImage } from "components/Playback/Image"
 
-import { handleCheckSaved } from "handlers"
+import {
+  handleCheckSavedTracks,
+  handleSaveTracks,
+  handleUnsaveTracks,
+} from "handlers"
+
+import { SavedIcon, SaveIcon } from "assets/svg"
 
 interface PlaybackInfoProps {
-  auth: string
-  track: Spotify.Track
   pbToggleImg: boolean
   setPbToggleImg: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export function PlaybackInfo({
-  auth,
-  track,
   pbToggleImg,
   setPbToggleImg,
 }: PlaybackInfoProps) {
-  const [saved, setSaved] = useState(false)
+  const { auth } = useAuthContext()
 
+  //player states
+  const { state } = usePlayerContext()
+  const {
+    track_window: { current_track: track },
+  } = state
+
+  //local states
+  const [saved, setSaved] = useState(true)
+
+  //on track change, checks if it is saved and updates page title
   useEffect(() => {
     if (track.id && auth) {
-    }
-  }, [saved])
-
-  useEffect(() => {
-    if (track.id && auth) {
-      handleCheckSaved(auth, [track.id]).then((res) => setSaved(res[0]))
+      handleCheckSavedTracks(auth, [track.id]).then((res) => setSaved(res[0]))
     }
     document.title =
       track.name +
@@ -40,18 +48,15 @@ export function PlaybackInfo({
       })
   }, [track])
 
-  const Artists = track.artists.map((artist, index) => (
-    <span key={artist.uri}>
-      {index > 0 && ", "}
-      <a
-        className="pb-track-artist hover:cursor-pointer hover:underline hover:text-white"
-        title={artist.name}
-        href={artist.uri}
-      >
-        {artist.name}
-      </a>
-    </span>
-  ))
+  //if logged and has state, toggles playback track saved state and updates locally
+  const onClick = useCallback(() => {
+    auth &&
+      state &&
+      (saved
+        ? handleUnsaveTracks(auth, [track.id])
+        : handleSaveTracks(auth, [track.id]))
+    setSaved((prev) => !prev)
+  }, [saved, setSaved])
 
   return (
     <div className="pb-info flex w-[30%] justify-start items-center">
@@ -60,26 +65,35 @@ export function PlaybackInfo({
           <PlaybackImage
             isToggled={pbToggleImg}
             setIsToggled={setPbToggleImg}
-            track={track}
           />
         </div>
       )}
-      <div className="pb-track-info -ml-0.5 overflow-hidden">
-        <div className="pb-track-title pr-5 text-sm hover:cursor-pointer hover:underline hover:text-white">
-          <a title={track.name} href={track.uri}>
+      <div className="pb-track-info flex flex-col -ml-0.5 overflow-hidden">
+        <div className="pb-track-title flex items-center h-4 pr-5 ">
+          <a
+            className="text-sm leading-4 hover:cursor-pointer hover:underline"
+            title={track.name}
+            href={track.uri}
+          >
             {track.name}
           </a>
         </div>
         <div className="pb-track-artists pr-5 text-[0.6875rem] text-[#b3b3b3]">
-          {Artists}
+          {track.artists.map((artist, index) => (
+            <span key={artist.uri}>
+              {index > 0 && ", "}
+              <a
+                className="pb-track-artist hover:cursor-pointer hover:underline hover:text-white focus:text-white"
+                title={artist.name}
+                href={artist.uri}
+              >
+                {artist.name}
+              </a>
+            </span>
+          ))}
         </div>
       </div>
-      <button
-        className="pb-track-toggle-saved btn default"
-        onClick={() => {
-          setSaved((prev) => !prev)
-        }}
-      >
+      <button className="pb-track-toggle-saved btn default" onClick={onClick}>
         {saved ? SavedIcon : SaveIcon}
       </button>
     </div>

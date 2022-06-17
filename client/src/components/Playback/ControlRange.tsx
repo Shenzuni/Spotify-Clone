@@ -5,48 +5,36 @@ import { Range } from "components/Range"
 import { display_mm_ss } from "utils/helpers/display_mm_ss"
 
 import { usePlayerContext } from "hooks/usePlayer"
+import { useAuthContext } from "hooks/useAuth"
 
-interface PlaybackControlRangeProps {
-  auth: string
-  player?: Spotify.Player
-  track: Spotify.Track
-  initialProgress: number
-  duration: number
-  playing: boolean
-}
+export function PlaybackControlRange() {
+  const { auth } = useAuthContext()
 
-export function PlaybackControlRange({
-  auth,
-  player,
-  track,
-  initialProgress,
-  duration,
-  playing,
-}: PlaybackControlRangeProps) {
-  const [progress, setProgress] = useState(0)
+  //player states
+  const { player, state } = usePlayerContext()
+  const { position: player_position, duration, paused } = state
+
+  //local states
+  const [position, setPosition] = useState(0)
   const [holdingRange, setHoldingRange] = useState(false)
 
-  const { avgColor } = usePlayerContext()
-
-  const progress_s = Math.floor(progress / 1000)
-  const duration_s = Math.floor(duration / 1000)
-
+  //player state update reflects locally
   useEffect(() => {
-    setProgress(initialProgress)
-  }, [track])
+    setPosition(player_position)
+  }, [state])
 
+  //update local position when playing and not holding playback input range
   useEffect(() => {
     let timeout: NodeJS.Timeout
     let interval: NodeJS.Timer
 
-    if (playing && !holdingRange) {
-      const ms_to_ceil = 1000 - (progress % 1000)
+    if (!paused && !holdingRange) {
+      const ms_to_ceil = 1000 - (position % 1000)
 
       timeout = setTimeout(() => {
-        setProgress((prev) => prev + ms_to_ceil)
-
+        setPosition((prev) => prev + ms_to_ceil)
         interval = setInterval(() => {
-          setProgress((prev) => prev + 1000)
+          setPosition((prev) => prev + 1000)
         }, 1000)
       }, ms_to_ceil)
     }
@@ -54,14 +42,18 @@ export function PlaybackControlRange({
       clearTimeout(timeout)
       clearInterval(interval)
     }
-  }, [playing, holdingRange])
+  }, [paused, holdingRange])
 
+  //input range dragging reflects locally
   const onChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      setProgress(e.target.valueAsNumber * 1000)
+    (value: number) => {
+      const local_position = value
+      setPosition(local_position)
     },
-    [setProgress]
+    [setPosition]
   )
+
+  //stops input range interval useEffect
   const onMouseDown = useCallback(
     (e: React.MouseEvent<HTMLInputElement, MouseEvent>) => {
       const leftClick = e.buttons === 1
@@ -69,20 +61,26 @@ export function PlaybackControlRange({
     },
     [setHoldingRange]
   )
-  const onClick = useCallback(() => {
-    player?.seek(progress)
+
+  //sets input range interval useEffect && update player position
+  const onClick = () => {
     setHoldingRange(false)
-  }, [setHoldingRange, player, progress])
+    player && player.seek(position)
+  }
+
+  //display
+  const position_s = Math.floor(position / 1000)
+  const duration_s = Math.floor(duration / 1000)
 
   return (
     <div className="flex items-center gap-2 h-auto">
       <div className="text-[0.6875rem] text-[#ffffffb3] min-w-[40px] text-right leading-1">
-        {display_mm_ss(progress_s)}
+        {display_mm_ss(position_s)}
       </div>
       <Range
-        value={progress_s}
-        max={duration_s}
-        color={avgColor}
+        value={position}
+        max={duration}
+        steps={200}
         onChange={onChange}
         onMouseDown={onMouseDown}
         onClick={onClick}

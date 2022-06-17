@@ -1,7 +1,7 @@
-import AuthProvider from "context/authContext";
-import PlayerProvider from "context/PlayerContext";
+import AuthProvider from "context/authContext"
+import PlayerProvider from "context/PlayerContext"
 
-import MainScreen from "containers/MainScreen";
+import { MainScreen } from "containers/MainScreen"
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
         <MainScreen />
       </PlayerProvider>
     </AuthProvider>
-  );
+  )
 }
 
-export default App;
+export default App

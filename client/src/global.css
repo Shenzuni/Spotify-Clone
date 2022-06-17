@@ -11,31 +11,73 @@
   .gradient-theme {
     @apply bg-gradient-to-t from-[#00000044] via-[#00000042] to-[#00000044];
   }
+  .nav-li {
+    @apply flex gap-4 items-center h-10
+    text-[#ffffffb3] hover:text-white fill-[#ffffffb3] hover:fill-white font-bold
+    hover:cursor-pointer;
+  }
+  .nav-li-selected {
+  }
+  .ellipsis {
+    @apply overflow-hidden whitespace-nowrap overflow-ellipsis;
+  }
+  .div-center {
+    @apply flex justify-center items-center;
+  }
+  .card-grid {
+    @apply grid grid-cols-3 grid-rows-2 gap-x-6 gap-y-3;
+  }
+  .card-item {
+    @apply text-sm select-none bg-[#ffffff1a] rounded-[4px] min-h-[80px] flex items-center gap-4 p-4 hover:bg-[rgba(255,255,255,0.15)] active:bg-[#ffffff1a];
+  }
 }
 @font-face {
+  font-family: spotify-circular;
+  font-style: normal;
+  font-weight: 200;
+  src: url(assets/fonts/CircularSp-Light.ttf);
+}
+@font-face {
+  font-family: spotify-circular;
+  font-style: normal;
+  font-weight: 400;
+  src: url(assets/fonts/CircularSp-Book.ttf);
+}
+@font-face {
+  font-family: spotify-circular;
+  font-style: normal;
+  font-weight: 700;
+  src: url(assets/fonts/CircularSp-Bold.ttf);
+}
+@font-face {
+  font-family: spotify-circular;
+  font-style: normal;
+  font-weight: 900;
+  src: url(assets/fonts/CircularSp-Black.ttf);
+}
+/* @font-face {
   font-family: spotify-regular;
   src: url(src/assets/fonts/CircularStd-Light.otf);
 }
 @font-face {
   font-family: spotify-bold;
   src: url(src/assets/fonts/CircularStd-Bold.otf);
-}
+} */
 body {
-  font-family: spotify-regular;
-  font-weight: lighter;
+  font-family: spotify-circular;
+  font-weight: 400;
   color: white;
-  letter-spacing: 0.01rem;
   cursor: default;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 a,
 button {
-  all: unset;
+  cursor: default;
+}
+ul,
+ol {
+  list-style: none;
 }
 a img {
-  padding: 0;
-  margin: 0;
   display: block;
 }
 
@@ -61,4 +103,17 @@ a img {
 /* tailwind nested group */
 .toggle-pb-img:hover > svg {
   fill: white;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(90, 90, 90);
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
 }

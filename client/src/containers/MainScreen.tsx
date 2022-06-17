@@ -6,17 +6,16 @@ import { usePlayer } from "hooks/usePlayer"
 import Top from "containers/Top"
 import Bottom from "containers/Bottom"
 
-export default function MainScreen() {
-  useAuth()
+export function MainScreen() {
+  const [pbToggleImg, setPbToggleImg] = useState(false)
 
+  useAuth()
   usePlayer()
 
-  const [pbToggleImg, setPbToggleImg] = useState(true)
-
   return (
-    <div className="split flex flex-col h-screen w-screen">
+    <main className="split flex flex-col h-screen w-screen">
       <Top pbToggleImg={pbToggleImg} setPbToggleImg={setPbToggleImg} />
       <Bottom pbToggleImg={pbToggleImg} setPbToggleImg={setPbToggleImg} />
-    </div>
+    </main>
   )
 }

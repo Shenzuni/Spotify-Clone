@@ -1,45 +1,75 @@
 import { useCallback, useEffect, useState } from "react"
 
+import { useAuthContext } from "hooks/useAuth"
+import { usePlayerContext } from "hooks/usePlayer"
+
 import { Range } from "components/Range"
 
-import { DevicesIcon, FullscrenIcon, LyricsIcon, QueueIcon } from "assets/svg"
+import {
+  DevicesIcon,
+  FullscrenIcon,
+  LyricsIcon,
+  QueueIcon,
+  VolumeFirst,
+  VolumeSecond,
+  VolumeThird,
+  VolumeZero,
+} from "assets/svg"
 
-interface PlaybackExtraControlsProps {
-  auth: string
-  player?: Spotify.Player
-  track: Spotify.Track
-}
+export function PlaybackExtraControls() {
+  const { auth } = useAuthContext()
 
-export function PlaybackExtraControls({
-  auth,
-  player,
-  track,
-}: PlaybackExtraControlsProps) {
-  const [volume, setVolume] = useState(0)
+  //player states
+  const { player, state } = usePlayerContext()
 
+  //local volume is player_volume * 100. ex: player_volume === 0.2 && local_volume === 20
+  const [volume, setVolume] = useState(20)
+  const [unmutedVolume, setUnmutedVolume] = useState(volume)
+
+  //sets local volume on player change (onPlayerReady)
   useEffect(() => {
-    player?.getVolume().then((res) => setVolume(res * 100))
+    player &&
+      player.getVolume().then((player_volume) => setVolume(player_volume * 100))
   }, [player, setVolume])
 
-  useEffect(() => {
-    player && player.setVolume(volume / 100)
-  }, [volume])
-
+  //input range dragging reflects locally and on player
   const onChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      setVolume(e.target.valueAsNumber)
+    (value: number) => {
+      const local_volume = value
+      setVolume(local_volume)
+      player && player.setVolume(local_volume / 100)
     },
-    [setVolume]
+    [player, setVolume]
   )
+
+  //toggle mute button
+  const muteOnClick = () => {
+    if (volume !== 0) {
+      setUnmutedVolume(volume)
+      setVolume(0)
+      player && player.setVolume(0)
+    } else {
+      setVolume(unmutedVolume)
+      player && player.setVolume(unmutedVolume)
+    }
+  }
 
   return (
     <div className="flex w-[30%] justify-end items-center">
       <button className="btn default">{LyricsIcon}</button>
       <button className="btn default">{QueueIcon}</button>
       <button className="btn default">{DevicesIcon}</button>
-      <div className="flex items-center min-w-[125px]">
-        <button className="btn default"></button>
-        <Range value={volume} max={100} onChange={onChange} />
+      <div className="flex items-center w-full max-w-[125px]">
+        <button
+          className="outer-webkit-range btn default"
+          onClick={muteOnClick}
+        >
+          {volume === 0 && VolumeZero}
+          {volume > 0 && volume <= 33 && VolumeFirst}
+          {volume > 33 && volume <= 66 && VolumeSecond}
+          {volume > 66 && volume <= 100 && VolumeThird}
+        </button>
+        <Range value={volume} max={100} steps={1} onChange={onChange} />
       </div>
       <button className="btn default ">{FullscrenIcon}</button>
     </div>
