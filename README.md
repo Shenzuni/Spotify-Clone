@@ -8,6 +8,9 @@ Spotify Clone that uses Spotify API to show currently playing song and almost-fu
   - Tailwindcss
 - Node.js
 
+## Live
+Remembering that it is available [live](https://spotify-clone-nu-swart.vercel.app)!
+
 ## For own use
 Be sure to set the following .env files (don't use slashes on uri ending):
  
